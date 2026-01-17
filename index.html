@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashutosh Pattnaik | Banking Professional</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: #0b1f3a;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .navbar a {
+      color: #ffffff;
+      margin-left: 22px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar a:hover {
+      color: #9ecbff;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: #0d6efd;
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: #0b5ed7;
+    }
+
+    .btn-outline {
+      border: 1px solid #0b1f3a;
+      color: #0b1f3a;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 12px;
+      display: inline-block;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    .btn-outline:hover {
+      background: #0b1f3a;
+      color: #ffffff;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 110px 8%;
+      background: linear-gradient(135deg, #0b1f3a, #123a63);
+      color: #ffffff;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 560px;
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+    }
+
+    .hero-buttons .btn-outline {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+
+    .hero-buttons .btn-outline:hover {
+      background: #ffffff;
+      color: #0b1f3a;
+    }
+
+    /* Sections */
+    .section {
+      padding: 75px 8%;
+    }
+
+    .light-bg {
+      background: #f4f6f8;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 25px;
+      color: #0b1f3a;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .skill {
+      background: #0b1f3a;
+      color: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Experience */
+    .experience-card {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+
+    /* List */
+    .list li {
+      margin-bottom: 12px;
+      list-style: none;
+    }
+
+    /* Contact */
+    .contact {
+      background: #0b1f3a;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .contact p {
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #08162b;
+      color: #bbbbbb;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .navbar nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">Ashutosh Pattnaik</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact" class="btn-primary">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Aspiring Banking Professional</h1>
+  <p>
+    Focused on retail banking operations, customer onboarding, financial discipline,
+    and delivering value within structured banking environments.
+  </p>
+  <div class="hero-buttons">
+    <a href="#contact" class="btn-primary">Get in Touch</a>
+    <a
+      href="https://drive.google.com/file/d/1B96sqqESRFAmb9MOPDj5F_1RCDyeriS5/preview"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-outline">
+      View Resume
+    </a>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <h2>About Me</h2>
+  <p>
+    I am an aspiring banking professional with hands-on experience as an FSA executive.
+    I possess a strong understanding of customer onboarding, basic financial products,
+    and operational discipline required in retail banking. I am highly motivated,
+    quick to learn, and committed to long-term growth within the banking sector.
+  </p>
+</section>
+
+<section id="education" class="section light-bg">
+  <h2>Education</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>B.Tech – Computer Science</h3>
+      <p><strong>CGPA:</strong> 8.1</p>
+      <p>NIST (2020–2024)</p>
+    </div>
+    <div class="card">
+      <h3>Intermediate (12th)</h3>
+      <p><strong>Score:</strong> 78%</p>
+      <p>Kendriya Vidyalaya (2018–2020)</p>
+    </div>
+    <div class="card">
+      <h3>Matriculation (10th)</h3>
+      <p><strong>Score:</strong> 83%</p>
+      <p>Kendriya Vidyalaya (2017–2018)</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <h2>Core Skills</h2>
+  <div class="skills-grid">
+    <div class="skill">Analytical Thinking</div>
+    <div class="skill">Customer Communication</div>
+    <div class="skill">Negotiation</div>
+    <div class="skill">Decision Making</div>
+    <div class="skill">Problem Solving</div>
+  </div>
+</section>
+
+<section id="experience" class="section light-bg">
+  <h2>Experience & Projects</h2>
+
+  <div class="experience-card">
+    <h3>Social Media Marketing Intern – NEO</h3>
+    <p>
+      Conducted engagement analysis across platforms and provided data-driven insights,
+      resulting in a <strong>15% increase</strong> in user interaction and
+      <strong>10% growth</strong> in followers within one month.
+    </p>
+  </div>
+
+  <div class="experience-card">
+    <h3>AI Career Mentor – Generative AI Resume Analyzer</h3>
+    <p>
+      Developed an AI-powered resume analysis and job-matching application using
+      Python, Streamlit, and Generative AI. The tool evaluates resumes against job
+      descriptions and provides structured improvement insights.
+    </p>
+
+    <!-- VIEW PROJECT BUTTON -->
+    <a
+      href="https://projects-2azkmuyxc7tpvubeh6sqxg.streamlit.app/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-outline">
+      View Project
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Achievements & Activities</h2>
+  <ul class="list">
+    <li>🏆 First place in Sanskrit Speech Competition</li>
+    <li>👥 Led 10+ Cloud Computing workshops for 100+ participants</li>
+  </ul>
+</section>
+
+<section id="contact" class="section contact">
+  <h2>Contact</h2>
+  <p>📞 +91 8658320057</p>
+  <p>📧 ashutoshpattnaik147@gmail.com</p>
+  <p>📍 Rayagada, Odisha</p>
+</section>
+
+<footer>
+  © 2026 Ashutosh Pattnaik | Professional Banking Profile
+</footer>
+
+<script>
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href'))
+        .scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
