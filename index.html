@@ -1,361 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashutosh Pattnaik | Banking Professional</title>
-  
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "v2vclnhzi9");
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SBI Daily Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-<meta name="google-site-verification" content="pQKMk5KieipsL4VDs4dx_1Y8w0ZG17q43bU_SZzXlww" />
-  
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        :root {
+            --sbi-blue: #003f87;
+            --sbi-light-blue: #0052a3;
+            --sbi-gold: #d4af37;
+            --sbi-gray: #f5f5f5;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --whatsapp-green: #25D366;
+            --border: #e0e0e0;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+        /* Lock the body strictly to the viewport height */
+        body, html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--sbi-blue) 0%, var(--sbi-light-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    body {
-      background: #ffffff;
-      color: #1f2933;
-      line-height: 1.6;
-    }
+        /* ===== LOGIN PAGE ===== */
+        .login-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 30px 20px;
+            max-width: 320px;
+            width: 90%;
+            animation: slideIn 0.4s ease-out;
+            text-align: center;
+        }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 8%;
-      background: #0b1f3a;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .logo {
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 20px;
-    }
+        .sbi-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--sbi-blue), var(--sbi-light-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            box-shadow: 0 4px 10px rgba(0, 63, 135, 0.3);
+        }
 
-    .navbar a {
-      color: #ffffff;
-      margin-left: 22px;
-      text-decoration: none;
-      font-weight: 500;
-    }
+        .sbi-logo::before {
+            content: "SBI";
+            color: var(--sbi-gold);
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
 
-    .navbar a:hover {
-      color: #9ecbff;
-    }
+        .login-header h1 {
+            color: var(--sbi-blue);
+            font-size: 18px;
+            margin-bottom: 2px;
+            font-weight: 600;
+        }
 
-    /* Buttons */
-    .btn-primary {
-      background: #0d6efd;
-      color: #ffffff;
-      padding: 12px 22px;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-block;
-      transition: 0.3s;
-    }
+        .login-header p {
+            color: var(--text-light);
+            font-size: 11px;
+            margin-bottom: 20px;
+        }
 
-    .btn-primary:hover {
-      background: #0b5ed7;
-    }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--sbi-blue), var(--sbi-light-blue));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-    .btn-outline {
-      border: 1px solid #0b1f3a;
-      color: #0b1f3a;
-      padding: 10px 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-top: 12px;
-      display: inline-block;
-      transition: 0.3s;
-      font-weight: 500;
-    }
+        .login-btn:active { transform: scale(0.96); }
 
-    .btn-outline:hover {
-      background: #0b1f3a;
-      color: #ffffff;
-    }
+        /* ===== DASHBOARD ===== */
+        .dashboard {
+            display: none;
+            background: var(--sbi-gray);
+            width: 100%;
+            height: 100%; /* Strictly 100% height */
+            max-width: 600px;
+            flex-direction: column;
+            animation: slideIn 0.3s ease-out;
+        }
 
-    /* Hero */
-    .hero {
-      padding: 110px 8%;
-      background: linear-gradient(135deg, #0b1f3a, #123a63);
-      color: #ffffff;
-    }
+        .dashboard.show {
+            display: flex;
+        }
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
+        /* Ultra Compact Header */
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--sbi-blue), var(--sbi-light-blue));
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0; /* Prevents header from squishing */
+        }
 
-    .hero p {
-      max-width: 560px;
-      font-size: 18px;
-    }
+        .header-left h2 { font-size: 14px; margin-bottom: 0; }
+        .header-left p { font-size: 10px; opacity: 0.9; margin: 0; }
 
-    .hero-buttons {
-      margin-top: 30px;
-    }
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+        }
 
-    .hero-buttons .btn-outline {
-      border-color: #ffffff;
-      color: #ffffff;
-    }
+        /* Dynamic Content Area */
+        .dashboard-content {
+            padding: 10px;
+            flex: 1; /* Takes remaining height */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* No scrolling inside */
+        }
 
-    .hero-buttons .btn-outline:hover {
-      background: #ffffff;
-      color: #0b1f3a;
-    }
+        .date-display {
+            text-align: right;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--sbi-blue);
+            margin-bottom: 8px;
+            flex-shrink: 0;
+        }
 
-    /* Sections */
-    .section {
-      padding: 75px 8%;
-    }
+        /* Grid scales exactly to remaining space */
+        .buttons-grid {
+            flex: 1; /* Stretches to fill space */
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr); /* Forces 3 equal rows */
+            gap: 8px;
+            margin-bottom: 10px;
+        }
 
-    .light-bg {
-      background: #f4f6f8;
-    }
+        .counter-button {
+            background: white;
+            border: none;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Centers content vertically */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.1s;
+            padding: 5px;
+        }
 
-    h2 {
-      font-size: 30px;
-      margin-bottom: 25px;
-      color: #0b1f3a;
-    }
+        .counter-button:active {
+            transform: scale(0.95);
+            background: #f0f0f0;
+        }
 
-    /* Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+        .button-icon {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
 
-    .card {
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-    }
+        .button-label {
+            color: var(--text-light);
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            text-align: center;
+        }
 
-    .card h3 {
-      margin-bottom: 8px;
-    }
+        .button-counter {
+            background: var(--sbi-gray);
+            color: var(--sbi-blue);
+            font-size: 18px;
+            font-weight: 700;
+            padding: 4px 15px;
+            border-radius: 6px;
+        }
 
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-    }
+        /* Footer buttons inside the flow, no fixed positioning needed */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+            padding-bottom: 5px;
+        }
 
-    .skill {
-      background: #0b1f3a;
-      color: #ffffff;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: 500;
-    }
+        .action-btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            color: white;
+        }
 
-    /* Experience */
-    .experience-card {
-      background: #ffffff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      margin-bottom: 20px;
-    }
+        .submit-btn { background: var(--whatsapp-green); }
+        .reset-btn { background: var(--warning); flex: 0.4; }
 
-    /* List */
-    .list li {
-      margin-bottom: 12px;
-      list-style: none;
-    }
+        /* ===== NOTIFICATIONS ===== */
+        .notification {
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            animation: fadeInOut 2s ease-in-out forwards;
+        }
 
-    /* Contact */
-    .contact {
-      background: #0b1f3a;
-      color: #ffffff;
-      text-align: center;
-    }
-
-    .contact p {
-      margin-bottom: 10px;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #08162b;
-      color: #bbbbbb;
-      font-size: 14px;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .navbar nav {
-        display: none;
-      }
-    }
-  </style>
+        @keyframes fadeInOut {
+            0% { opacity: 0; top: 5px; }
+            15% { opacity: 1; top: 15px; }
+            85% { opacity: 1; top: 15px; }
+            100% { opacity: 0; top: 5px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header class="navbar">
-  <div class="logo">Ashutosh Pattnaik</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact" class="btn-primary">Contact</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>Aspiring Banking Professional</h1>
-  <p>
-    Focused on retail banking operations, customer onboarding, financial discipline,
-    and delivering value within structured banking environments.
-  </p>
-  <div class="hero-buttons">
-    <a href="#contact" class="btn-primary">Get in Touch</a>
-    <a
-      href="https://drive.google.com/file/d/1B96sqqESRFAmb9MOPDj5F_1RCDyeriS5/preview"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn-outline">
-      View Resume
-    </a>
-  </div>
-</section>
-
-<section id="about" class="section">
-  <h2>About Me</h2>
-  <p>
-    I am an aspiring banking professional with hands-on experience as an FSA executive.
-    I possess a strong understanding of customer onboarding, basic financial products,
-    and operational discipline required in retail banking. I am highly motivated,
-    quick to learn, and committed to long-term growth within the banking sector.
-  </p>
-</section>
-
-<section id="education" class="section light-bg">
-  <h2>Education</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>B.Tech – Computer Science</h3>
-      <p><strong>CGPA:</strong> 8.1</p>
-      <p>NIST (2020–2024)</p>
+    <div class="login-container" id="loginContainer">
+        <div class="login-header">
+            <div class="sbi-logo"></div>
+            <h1>Daily Workbook</h1>
+            <p>Field Operations Report</p>
+        </div>
+        
+        <button class="login-btn" onclick="login()">Login</button>
     </div>
-    <div class="card">
-      <h3>Intermediate (12th)</h3>
-      <p><strong>Score:</strong> 78%</p>
-      <p>Kendriya Vidyalaya (2018–2020)</p>
+
+    <div class="dashboard" id="dashboard">
+        <div class="dashboard-header">
+            <div class="header-left">
+                <h2>📊 Workbook</h2>
+                <p>Tap to count activities</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="dashboard-content">
+            
+            <div class="date-display" id="todayDate"></div>
+
+            <div class="buttons-grid">
+                <div class="counter-button" onclick="increment('nps')">
+                    <span class="button-icon">😊</span>
+                    <span class="button-label">NPS</span>
+                    <div class="button-counter" id="nps">0</div>
+                </div>
+
+                <div class="counter-button" onclick="increment('whatsapp')">
+                    <span class="button-icon">💬</span>
+                    <span class="button-label">WhatsApp</span>
+                    <div class="button-counter" id="whatsapp">0</div>
+                </div>
+
+                <div class="counter-button" onclick="increment('yonoRegistration')">
+                    <span class="button-icon">📝</span>
+                    <span class="button-label">Yono Reg.</span>
+                    <div class="button-counter" id="yonoRegistration">0</div>
+                </div>
+
+                <div class="counter-button" onclick="increment('contactCentre')">
+                    <span class="button-icon">☎️</span>
+                    <span class="button-label">Contact Centre</span>
+                    <div class="button-counter" id="contactCentre">0</div>
+                </div>
+
+                <div class="counter-button" onclick="increment('cbdc')">
+                    <span class="button-icon">💳</span>
+                    <span class="button-label">CBDC</span>
+                    <div class="button-counter" id="cbdc">0</div>
+                </div>
+
+                <div class="counter-button" onclick="increment('channelMigration')">
+                    <span class="button-icon">🔄</span>
+                    <span class="button-label">Migration</span>
+                    <div class="button-counter" id="channelMigration">0</div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-btn submit-btn" onclick="exportToWhatsApp()">📱 Send Report</button>
+                <button class="action-btn reset-btn" onclick="resetData()">🔄 Reset</button>
+            </div>
+        </div>
     </div>
-    <div class="card">
-      <h3>Matriculation (10th)</h3>
-      <p><strong>Score:</strong> 83%</p>
-      <p>Kendriya Vidyalaya (2017–2018)</p>
-    </div>
-  </div>
-</section>
 
-<section id="skills" class="section">
-  <h2>Core Skills</h2>
-  <div class="skills-grid">
-    <div class="skill">Analytical Thinking</div>
-    <div class="skill">Customer Communication</div>
-    <div class="skill">Negotiation</div>
-    <div class="skill">Decision Making</div>
-    <div class="skill">Problem Solving</div>
-  </div>
-</section>
+    <script>
+        // Initialize App
+        window.addEventListener('load', () => {
+            updateCurrentDate();
+            checkLoginStatus();
+        });
 
-<section id="experience" class="section light-bg">
-  <h2>Experience & Projects</h2>
+        function formatDateDisplay(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
 
-  <div class="experience-card">
-    <h3>Social Media Marketing Intern – NEO</h3>
-    <p>
-      Conducted engagement analysis across platforms and provided data-driven insights,
-      resulting in a <strong>15% increase</strong> in user interaction and
-      <strong>10% growth</strong> in followers within one month.
-    </p>
-  </div>
+        function updateCurrentDate() {
+            document.getElementById('todayDate').textContent = "Date: " + formatDateDisplay(new Date());
+        }
 
-  <div class="experience-card">
-    <h3>AI Career Mentor – Generative AI Resume Analyzer</h3>
-    <p>
-      Developed an AI-powered resume analysis and job-matching application using
-      Python, Streamlit, and Generative AI. The tool evaluates resumes against job
-      descriptions and provides structured improvement insights.
-    </p>
+        // LOGIN FUNCTIONALITY
+        function login() {
+            localStorage.setItem('loggedIn', 'true');
+            showDashboard();
+        }
 
-    <!-- VIEW PROJECT BUTTON -->
-    <a
-      href="https://projects-2azkmuyxc7tpvubeh6sqxg.streamlit.app/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn-outline">
-      View Project
-    </a>
-  </div>
-</section>
+        function checkLoginStatus() {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                loadSavedData();
+                showDashboard();
+            }
+        }
 
-<section class="section">
-  <h2>Achievements & Activities</h2>
-  <ul class="list">
-    <li>🏆 First place in Sanskrit Speech Competition</li>
-    <li>👥 Led 10+ Cloud Computing workshops for 100+ participants</li>
-  </ul>
-</section>
+        function showDashboard() {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('dashboard').classList.add('show');
+        }
 
-<section id="contact" class="section contact">
-  <h2>Contact</h2>
-  <p>📞 +91 8658320057</p>
-  <p>📧 ashutoshpattnaik147@gmail.com</p>
-  <p>📍 Rayagada, Odisha</p>
-</section>
+        // COUNTERS & DATA
+        function increment(fieldName) {
+            let current = parseInt(document.getElementById(fieldName).textContent) || 0;
+            current++;
+            document.getElementById(fieldName).textContent = current;
+            saveData();
+            
+            // Haptic feedback for mobile devices
+            if (navigator.vibrate) navigator.vibrate(50);
+        }
 
-<footer>
-  © 2026 Ashutosh Pattnaik | Professional Banking Profile
-</footer>
+        function saveData() {
+            const data = {
+                nps: document.getElementById('nps').textContent,
+                whatsapp: document.getElementById('whatsapp').textContent,
+                yonoRegistration: document.getElementById('yonoRegistration').textContent,
+                contactCentre: document.getElementById('contactCentre').textContent,
+                cbdc: document.getElementById('cbdc').textContent,
+                channelMigration: document.getElementById('channelMigration').textContent
+            };
+            localStorage.setItem('workbookData', JSON.stringify(data));
+        }
 
-<script>
-  // Smooth scrolling
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href'))
-        .scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-</script>
+        function loadSavedData() {
+            const saved = localStorage.getItem('workbookData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                document.getElementById('nps').textContent = data.nps || 0;
+                document.getElementById('whatsapp').textContent = data.whatsapp || 0;
+                document.getElementById('yonoRegistration').textContent = data.yonoRegistration || 0;
+                document.getElementById('contactCentre').textContent = data.contactCentre || 0;
+                document.getElementById('cbdc').textContent = data.cbdc || 0;
+                document.getElementById('channelMigration').textContent = data.channelMigration || 0;
+            }
+        }
 
+        // WHATSAPP EXPORT (Hardcoded Format)
+        function exportToWhatsApp() {
+            const today = formatDateDisplay(new Date());
+
+            const nps = document.getElementById('nps').textContent;
+            const whatsapp = document.getElementById('whatsapp').textContent;
+            const yono = document.getElementById('yonoRegistration').textContent;
+            const cc = document.getElementById('contactCentre').textContent;
+            const cbdc = document.getElementById('cbdc').textContent;
+            const cm = document.getElementById('channelMigration').textContent;
+
+            // Generates format with hardcoded name, branch name, and branch code
+            const reportContent = `Date: ${today}
+Name: ELIPOMA NAG
+Branch name: SBI KORAPUT
+Branch code: 00121
+
+*Data Report:*
+NPS: ${nps}
+WhatsApp: ${whatsapp}
+Yono Registration: ${yono}
+Contact Centre: ${cc}
+CBDC: ${cbdc}
+Channel Migration: ${cm}`;
+
+            const encodedMessage = encodeURIComponent(reportContent);
+            window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+        }
+
+        function resetData() {
+            if (confirm('Reset today\'s counts to zero?')) {
+                const fields = ['nps', 'whatsapp', 'yonoRegistration', 'contactCentre', 'cbdc', 'channelMigration'];
+                fields.forEach(field => document.getElementById(field).textContent = '0');
+                localStorage.removeItem('workbookData');
+                showNotification('Counters reset to 0');
+            }
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('loggedIn');
+                location.reload();
+            }
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 2000);
+        }
+    </script>
 </body>
 </html>
-
-
